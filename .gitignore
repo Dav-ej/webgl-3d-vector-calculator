@@ -1,0 +1,14 @@
+# Local database credentials (copy config.example.php to config.php)
+config.php
+
+# OS / editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Dependencies (decimal.js is now vendored in lib/)
+node_modules/
+
+# Database dumps / backups
+*.sql.bak
+*-backup.sql

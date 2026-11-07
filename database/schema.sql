@@ -1,0 +1,36 @@
+CREATE DATABASE IF NOT EXISTS vector_geometry
+  DEFAULT CHARACTER SET utf8mb4;
+USE vector_geometry;
+
+CREATE TABLE IF NOT EXISTS users (
+  userID   INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(30) NOT NULL UNIQUE,
+  PRIMARY KEY (userID)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS loginInformation (
+  userID           INT NOT NULL,
+  hashedPassword   TEXT NOT NULL,
+  passwordSalt     TEXT NOT NULL,
+  lastLoginAttempt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (userID),
+  FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS tokenInformation (
+  userID      INT NOT NULL,
+  hashedToken TEXT NOT NULL,
+  salt        TEXT NOT NULL,
+  createdAt   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (hashedToken(32)),
+  FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS environments (
+  id       INT NOT NULL AUTO_INCREMENT,
+  userID   INT NOT NULL,
+  jsonData TEXT NOT NULL,
+  name     TEXT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (userID) REFERENCES users(userID) ON DELETE CASCADE
+) ENGINE=InnoDB;
