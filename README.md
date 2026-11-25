@@ -4,7 +4,11 @@ Points, lines and planes rendered in 3D by a from-scratch WebGL renderer, with e
 
 Originally built as my A-Level Computer Science NEA project. [Read the full write-up (PDF)](docs/NEA-writeup.pdf), covering analysis, design, testing and evaluation.
 
+## Gif
+
 ![Demo of the 3D editor](docs/images/alevelcalc.gif)
+
+## Images
 
 <p>
   <a href="docs/images/alevelcalc-home.png"><img src="docs/images/alevelcalc-home.png" width="32%" alt="Home page listing saved environments"></a>
